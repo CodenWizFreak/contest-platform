@@ -1,4 +1,4 @@
-# Code Among Us — Contest Platform
+# Competitive Coding Contest Platform with Judge0 Client
 ## Full Setup Guide for Ubuntu 24.04
 
 ---
@@ -8,7 +8,7 @@
 - Monaco Editor (VS Code editor in browser)
 - Judge0 for code execution (self-hosted via Docker)
 - SQLite database (zero-config)
-- 30 participants connect via LAN — no installation needed on lab PCs
+- Users connect via LAN — no separate installation needed on client PCs
 
 ---
 
@@ -19,9 +19,11 @@
 sudo apt update
 sudo apt install python3 python3-pip -y
 
-# Install Flask and requests
-cd ~/contest_platform
-pip3 install flask requests --break-system-packages
+# Install Flask, dotenv and requests
+cd ~/contest-platform
+pip3 install flask python-dotenv requests --break-system-packages
+
+
 ```
 
 ---
@@ -80,7 +82,19 @@ This is the address participants will open in their browser.
 
 ---
 
-## STEP 5 — Start the Contest Server
+## STEP 4 - Set up the Environment Variables
+
+```bash
+JUDGE0_URL=
+ADMIN_PASSWORD=
+CONTEST_DURATION_SECONDS=
+DB_PATH=
+SECRET_KEY=
+```
+
+---
+
+## STEP 6 — Start the Contest Server
 
 ```bash
 cd ~/contest_platform
@@ -91,10 +105,10 @@ The server starts on port 5000.
 
 ---
 
-## STEP 6 — On Contest Day
+## STEP 7 — On Contest Day
 
 ### Admin flow:
-1. Open `http://localhost:5000/admin` on YOUR laptop
+1. Open `http://localhost:5000/admin` on YOUR PC
 2. Login with the admin password
 3. When ready to start the contest → click **▶ Start Contest**
 4. This starts the shared 1-hour timer for everyone simultaneously
@@ -111,22 +125,7 @@ The server starts on port 5000.
 7. Click **✓ Submit** to run all test cases (including hidden)
 8. Green tick appears when all test cases pass
 9. End Test button appears in the last 10 minutes
-10. After 1 hour, test auto-ends
-
----
-
-## THE 6 QUESTIONS — AMONG US THEME
-
-| Task | Title | Sabotage (Wrong algo) | Fix |
-|------|-------|----------------------|-----|
-| 1 | The Comm Tower | O(N²) frequency count | Use hashmap → O(N) |
-| 2 | The Reactor Meltdown | O(N) linear search | Use binary search → O(log N) |
-| 3 | The Vent Network | DFS (wrong for shortest path) | Use BFS → O(N+M) |
-| 4 | The O2 Sabotage | O(N³) brute force subarray | Kadane's algorithm → O(N) |
-| 5 | The Meeting Room | Count-based bracket check | Stack-based matching → O(N) |
-| 6 | Emergency Meeting | O(N²) two-sum | Hashmap two-sum → O(N) |
-
-Each question has 3 visible + 3 hidden test cases.
+10. Test auto-ends after time-limit is up
 
 ---
 
@@ -200,15 +199,43 @@ python3 app.py   # Auto-recreates fresh DB
 
 ```
 contest_platform/
-├── app.py                    ← Flask server (main)
+├── app.py                   
+├── .env                      
+├── .gitignore                
 ├── requirements.txt
-├── contest.db                ← Auto-created SQLite database
-├── data/
-│   └── problems.json         ← All 6 questions + test cases
-└── templates/
-    ├── register.html          ← Participant registration
-    ├── contest.html           ← Main contest page (Monaco editor)
-    ├── ended.html             ← After submitting
-    ├── admin_login.html       ← Admin login
-    └── admin.html             ← Admin dashboard
+│
+├── core/
+│   ├── __init__.py
+│   ├── config.py             
+│   ├── database.py          
+│   └── problems.py           
+│
+├── routes/
+│   ├── __init__.py
+│   ├── participant.py        
+│   ├── admin.py              
+│   └── judge.py              
+│
+├── templates/
+│   ├── register.html         
+│   ├── contest.html
+│   ├── admin.html
+│   ├── admin_login.html
+│   └── ended.html
+│
+├── static/
+│   ├── css/
+│   │   ├── register.css
+│   │   ├── contest.css
+│   │   ├── admin.css
+│   │   ├── admin_login.css
+│   │   └── ended.css
+│   └── js/
+│       ├── register.js
+│       ├── contest.js
+│       ├── admin.js
+│       └── admin_login.js
+│
+└── data/
+    └── problems.json         
 ```
