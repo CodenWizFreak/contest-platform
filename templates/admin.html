@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard — Skeld Sprint</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/admin.css">
+</head>
+<body>
+
+  <!-- Code viewer modal -->
+  <div class="modal-overlay" id="code-modal">
+    <div class="modal-big">
+      <div class="modal-head">
+        <h3 id="modal-title">Submissions</h3>
+        <button class="modal-close" onclick="closeModal()">✕ Close</button>
+      </div>
+      <div class="modal-body" id="modal-body"></div>
+    </div>
+  </div>
+
+  <!-- Top bar -->
+  <div id="topbar">
+    <div class="brand">⚙ ADMIN CONTROL</div>
+    <div class="top-spacer"></div>
+    <button id="refresh-btn" onclick="loadData()">↻ Refresh</button>
+    <button class="top-btn btn-start" onclick="startContest()">▶ Start Contest</button>
+    <button class="top-btn btn-stop"  onclick="stopContest()">■ Stop Contest</button>
+    <a href="/admin/logout"><button class="top-btn btn-logout">Logout</button></a>
+  </div>
+
+  <!-- Status bar -->
+  <div id="status-bar">
+    <span class="status-dot" id="s-dot"></span>
+    <span id="s-text">Loading...</span>
+    <span class="divider-pipe">|</span>
+    <span id="s-time"></span>
+  </div>
+
+  <!-- Main content -->
+  <div id="content">
+
+    <div class="section-title">// Mission Overview</div>
+    <div class="stats-grid">
+      <div class="stat-card"><div class="stat-val" id="stat-total">—</div><div class="stat-label">Participants</div></div>
+      <div class="stat-card"><div class="stat-val" id="stat-submitted">—</div><div class="stat-label">Submitted</div></div>
+      <div class="stat-card"><div class="stat-val" id="stat-active">—</div><div class="stat-label">Active</div></div>
+      <div class="stat-card"><div class="stat-val" id="stat-solved">—</div><div class="stat-label">Avg Solved</div></div>
+    </div>
+
+    <div class="section-title">// Crew Manifest</div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>#</th><th>Name</th><th>College</th><th>System</th><th>Phone</th>
+            <th>Solved</th><th>Status</th><th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="participants-body">
+          <tr><td colspan="8" class="empty-cell">Loading...</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="section-title">// Leaderboard</div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Rank</th><th>Name</th><th>College</th><th>System</th>
+            <th>Solved</th><th>Total Time</th><th>Wrong Submissions</th>
+          </tr>
+        </thead>
+        <tbody id="leaderboard-body">
+          <tr><td colspan="7" class="empty-cell">Loading...</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
+  <script src="/static/js/admin.js"></script>
+</body>
+</html>

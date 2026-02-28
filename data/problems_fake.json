@@ -1,0 +1,194 @@
+[
+  {
+    "id": 1,
+    "title": "Task 1: The Comm Tower",
+    "subtitle": "Easy — Arrays",
+    "difficulty": "easy",
+    "description": "Given an array of <strong>N</strong> integers, return the <strong>sum of all even numbers</strong> in the array.",
+    "input_format": "Line 1: Integer N\nLine 2: N space-separated integers",
+    "output_format": "A single integer — the sum of all even numbers.",
+    "constraints": "1 ≤ N ≤ 10⁴  |  -10⁶ ≤ arr[i] ≤ 10⁶",
+    "visible_test_cases": [
+      {"input": "5\n1 2 3 4 5", "expected": "RESULT:6", "explanation": "2 + 4 = 6"},
+      {"input": "4\n10 11 12 13", "expected": "RESULT:22", "explanation": "10 + 12 = 22"},
+      {"input": "3\n1 3 5", "expected": "RESULT:0", "explanation": "No even numbers"}
+    ],
+    "hidden_test_cases": [
+      {"input": "2\n0 0", "expected": "RESULT:0"},
+      {"input": "5\n-2 -4 1 3 5", "expected": "RESULT:-6"},
+      {"input": "1\n7", "expected": "RESULT:0"}
+    ],
+    "boilerplate": {
+      "python": "def sum_even(arr):\n    # Write your code here\n    pass\n",
+      "cpp": "int sum_even(vector<int>& arr) {\n    // Write your code here\n}\n",
+      "c": "int sum_even(int* arr, int n) {\n    // Write your code here\n}\n",
+      "java": "    static int sum_even(int[] arr) {\n        // Write your code here\n        return 0;\n    }\n"
+    },
+    "hidden_main": {
+      "python": "\nimport sys\ndef main():\n    data = sys.stdin.read().split()\n    n = int(data[0])\n    arr = list(map(int, data[1:n+1]))\n    print(f'RESULT:{sum_even(arr)}')\nmain()\n",
+      "cpp": "\n#include <bits/stdc++.h>\nusing namespace std;\nint main() {\n    int n; cin >> n;\n    vector<int> arr(n);\n    for (int i = 0; i < n; i++) cin >> arr[i];\n    cout << \"RESULT:\" << sum_even(arr) << endl;\n    return 0;\n}\n",
+      "c": "\n#include <stdio.h>\n#include <stdlib.h>\nint main() {\n    int n; scanf(\"%d\", &n);\n    int* arr = (int*)malloc(n * sizeof(int));\n    for (int i = 0; i < n; i++) scanf(\"%d\", &arr[i]);\n    printf(\"RESULT:%d\\n\", sum_even(arr, n));\n    free(arr);\n    return 0;\n}\n",
+      "java": "\n    public static void main(String[] args) {\n        java.util.Scanner sc = new java.util.Scanner(System.in);\n        int n = sc.nextInt();\n        int[] arr = new int[n];\n        for (int i = 0; i < n; i++) arr[i] = sc.nextInt();\n        System.out.println(\"RESULT:\" + sum_even(arr));\n    }\n"
+    }
+  },
+  {
+    "id": 2,
+    "title": "Task 2: The Reactor Meltdown",
+    "subtitle": "Easy — Strings",
+    "difficulty": "easy",
+    "description": "Given a string, return it <strong>reversed</strong>.",
+    "input_format": "Line 1: A single string (no spaces)",
+    "output_format": "The reversed string.",
+    "constraints": "1 ≤ |s| ≤ 10⁵  |  s contains only lowercase English letters",
+    "visible_test_cases": [
+      {"input": "hello", "expected": "RESULT:olleh", "explanation": "hello reversed"},
+      {"input": "abcde", "expected": "RESULT:edcba", "explanation": "abcde reversed"},
+      {"input": "a", "expected": "RESULT:a", "explanation": "Single character"}
+    ],
+    "hidden_test_cases": [
+      {"input": "racecar", "expected": "RESULT:racecar"},
+      {"input": "skeld", "expected": "RESULT:dlelks"},
+      {"input": "zzz", "expected": "RESULT:zzz"}
+    ],
+    "boilerplate": {
+      "python": "def reverse_string(s):\n    # Write your code here\n    pass\n",
+      "cpp": "string reverse_string(string s) {\n    // Write your code here\n}\n",
+      "c": "void reverse_string(char* s, char* out) {\n    // Write your code here\n}\n",
+      "java": "    static String reverse_string(String s) {\n        // Write your code here\n        return \"\";\n    }\n"
+    },
+    "hidden_main": {
+      "python": "\nimport sys\ndef main():\n    s = sys.stdin.read().strip()\n    print(f'RESULT:{reverse_string(s)}')\nmain()\n",
+      "cpp": "\n#include <bits/stdc++.h>\nusing namespace std;\nint main() {\n    string s; cin >> s;\n    cout << \"RESULT:\" << reverse_string(s) << endl;\n    return 0;\n}\n",
+      "c": "\n#include <stdio.h>\n#include <string.h>\nint main() {\n    char s[100001], out[100001];\n    scanf(\"%s\", s);\n    reverse_string(s, out);\n    printf(\"RESULT:%s\\n\", out);\n    return 0;\n}\n",
+      "java": "\n    public static void main(String[] args) {\n        java.util.Scanner sc = new java.util.Scanner(System.in);\n        System.out.println(\"RESULT:\" + reverse_string(sc.next()));\n    }\n"
+    }
+  },
+  {
+    "id": 3,
+    "title": "Task 3: The Vent Network",
+    "subtitle": "Medium — Stack",
+    "difficulty": "medium",
+    "description": "Given an integer <strong>N</strong>, return the <strong>factorial</strong> of N. Since the answer can be large, return it <strong>modulo 10⁹+7</strong>.",
+    "input_format": "Line 1: A single integer N",
+    "output_format": "A single integer — N! mod (10⁹+7)",
+    "constraints": "0 ≤ N ≤ 10⁵",
+    "visible_test_cases": [
+      {"input": "5", "expected": "RESULT:120", "explanation": "5! = 120"},
+      {"input": "0", "expected": "RESULT:1", "explanation": "0! = 1 by definition"},
+      {"input": "10", "expected": "RESULT:3628800", "explanation": "10! = 3628800"}
+    ],
+    "hidden_test_cases": [
+      {"input": "1", "expected": "RESULT:1"},
+      {"input": "20", "expected": "RESULT:146326063"},
+      {"input": "100000", "expected": "RESULT:457992974"}
+    ],
+    "boilerplate": {
+      "python": "def factorial(n):\n    # Write your code here\n    pass\n",
+      "cpp": "long long factorial(int n) {\n    // Write your code here\n}\n",
+      "c": "long long factorial(int n) {\n    // Write your code here\n}\n",
+      "java": "    static long factorial(int n) {\n        // Write your code here\n        return 0;\n    }\n"
+    },
+    "hidden_main": {
+      "python": "\nimport sys\ndef main():\n    n = int(sys.stdin.read().strip())\n    print(f'RESULT:{factorial(n)}')\nmain()\n",
+      "cpp": "\n#include <bits/stdc++.h>\nusing namespace std;\nint main() {\n    int n; cin >> n;\n    cout << \"RESULT:\" << factorial(n) << endl;\n    return 0;\n}\n",
+      "c": "\n#include <stdio.h>\nint main() {\n    int n; scanf(\"%d\", &n);\n    printf(\"RESULT:%lld\\n\", factorial(n));\n    return 0;\n}\n",
+      "java": "\n    public static void main(String[] args) {\n        java.util.Scanner sc = new java.util.Scanner(System.in);\n        System.out.println(\"RESULT:\" + factorial(sc.nextInt()));\n    }\n"
+    }
+  },
+  {
+    "id": 4,
+    "title": "Task 4: The O2 Sabotage",
+    "subtitle": "Medium — Trees",
+    "difficulty": "medium",
+    "description": "Given two integers <strong>A</strong> and <strong>B</strong>, return their <strong>Greatest Common Divisor (GCD)</strong>.",
+    "input_format": "Line 1: Two space-separated integers A and B",
+    "output_format": "A single integer — GCD(A, B)",
+    "constraints": "1 ≤ A, B ≤ 10⁹",
+    "visible_test_cases": [
+      {"input": "12 8", "expected": "RESULT:4", "explanation": "GCD(12, 8) = 4"},
+      {"input": "100 75", "expected": "RESULT:25", "explanation": "GCD(100, 75) = 25"},
+      {"input": "7 13", "expected": "RESULT:1", "explanation": "Coprime numbers"}
+    ],
+    "hidden_test_cases": [
+      {"input": "1 1", "expected": "RESULT:1"},
+      {"input": "1000000000 999999999", "expected": "RESULT:1"},
+      {"input": "48 36", "expected": "RESULT:12"}
+    ],
+    "boilerplate": {
+      "python": "def gcd(a, b):\n    # Write your code here\n    pass\n",
+      "cpp": "int gcd(int a, int b) {\n    // Write your code here\n}\n",
+      "c": "int gcd(int a, int b) {\n    // Write your code here\n}\n",
+      "java": "    static int gcd(int a, int b) {\n        // Write your code here\n        return 0;\n    }\n"
+    },
+    "hidden_main": {
+      "python": "\nimport sys\ndef main():\n    data = sys.stdin.read().split()\n    a, b = int(data[0]), int(data[1])\n    print(f'RESULT:{gcd(a, b)}')\nmain()\n",
+      "cpp": "\n#include <bits/stdc++.h>\nusing namespace std;\nint main() {\n    int a, b; cin >> a >> b;\n    cout << \"RESULT:\" << gcd(a, b) << endl;\n    return 0;\n}\n",
+      "c": "\n#include <stdio.h>\nint main() {\n    int a, b; scanf(\"%d %d\", &a, &b);\n    printf(\"RESULT:%d\\n\", gcd(a, b));\n    return 0;\n}\n",
+      "java": "\n    public static void main(String[] args) {\n        java.util.Scanner sc = new java.util.Scanner(System.in);\n        System.out.println(\"RESULT:\" + gcd(sc.nextInt(), sc.nextInt()));\n    }\n"
+    }
+  },
+  {
+    "id": 5,
+    "title": "Task 5: The Meeting Room",
+    "subtitle": "Hard — Graphs",
+    "difficulty": "hard",
+    "description": "Given a sorted array of <strong>N</strong> integers and a target value, return the <strong>index</strong> of the target using binary search. If not found, return <strong>-1</strong>.",
+    "input_format": "Line 1: Two integers N and target\nLine 2: N sorted space-separated integers",
+    "output_format": "A single integer — index of target, or -1.",
+    "constraints": "1 ≤ N ≤ 10⁶  |  -10⁹ ≤ arr[i], target ≤ 10⁹  |  Array is sorted in ascending order",
+    "visible_test_cases": [
+      {"input": "5 3\n1 2 3 4 5", "expected": "RESULT:2", "explanation": "3 is at index 2"},
+      {"input": "4 10\n1 5 7 10", "expected": "RESULT:3", "explanation": "10 is at index 3"},
+      {"input": "3 6\n1 2 4", "expected": "RESULT:-1", "explanation": "6 not found"}
+    ],
+    "hidden_test_cases": [
+      {"input": "1 1\n1", "expected": "RESULT:0"},
+      {"input": "5 1\n1 2 3 4 5", "expected": "RESULT:0"},
+      {"input": "5 5\n1 2 3 4 5", "expected": "RESULT:4"}
+    ],
+    "boilerplate": {
+      "python": "def binary_search(arr, target):\n    # Write your code here\n    pass\n",
+      "cpp": "int binary_search(vector<int>& arr, int target) {\n    // Write your code here\n}\n",
+      "c": "int binary_search(int* arr, int n, int target) {\n    // Write your code here\n}\n",
+      "java": "    static int binary_search(int[] arr, int target) {\n        // Write your code here\n        return -1;\n    }\n"
+    },
+    "hidden_main": {
+      "python": "\nimport sys\ndef main():\n    data = sys.stdin.read().split()\n    n, target = int(data[0]), int(data[1])\n    arr = list(map(int, data[2:n+2]))\n    print(f'RESULT:{binary_search(arr, target)}')\nmain()\n",
+      "cpp": "\n#include <bits/stdc++.h>\nusing namespace std;\nint main() {\n    int n, target; cin >> n >> target;\n    vector<int> arr(n);\n    for (int i = 0; i < n; i++) cin >> arr[i];\n    cout << \"RESULT:\" << binary_search(arr, target) << endl;\n    return 0;\n}\n",
+      "c": "\n#include <stdio.h>\n#include <stdlib.h>\nint main() {\n    int n, target; scanf(\"%d %d\", &n, &target);\n    int* arr = (int*)malloc(n * sizeof(int));\n    for (int i = 0; i < n; i++) scanf(\"%d\", &arr[i]);\n    printf(\"RESULT:%d\\n\", binary_search(arr, n, target));\n    free(arr);\n    return 0;\n}\n",
+      "java": "\n    public static void main(String[] args) {\n        java.util.Scanner sc = new java.util.Scanner(System.in);\n        int n = sc.nextInt(), target = sc.nextInt();\n        int[] arr = new int[n];\n        for (int i = 0; i < n; i++) arr[i] = sc.nextInt();\n        System.out.println(\"RESULT:\" + binary_search(arr, target));\n    }\n"
+    }
+  },
+  {
+    "id": 6,
+    "title": "Task 6: Emergency Meeting",
+    "subtitle": "Hard — Dynamic Programming",
+    "difficulty": "hard",
+    "description": "Given N, return the <strong>Nth Fibonacci number</strong>. F(0)=0, F(1)=1, F(N)=F(N-1)+F(N-2). Return the result <strong>modulo 10⁹+7</strong>.",
+    "input_format": "Line 1: A single integer N",
+    "output_format": "A single integer — F(N) mod (10⁹+7)",
+    "constraints": "0 ≤ N ≤ 10⁶",
+    "visible_test_cases": [
+      {"input": "0", "expected": "RESULT:0", "explanation": "F(0) = 0"},
+      {"input": "1", "expected": "RESULT:1", "explanation": "F(1) = 1"},
+      {"input": "10", "expected": "RESULT:55", "explanation": "F(10) = 55"}
+    ],
+    "hidden_test_cases": [
+      {"input": "2", "expected": "RESULT:1"},
+      {"input": "50", "expected": "RESULT:12586269025"},
+      {"input": "1000000", "expected": "RESULT:209952684"}
+    ],
+    "boilerplate": {
+      "python": "def fibonacci(n):\n    # Write your code here\n    pass\n",
+      "cpp": "long long fibonacci(int n) {\n    // Write your code here\n}\n",
+      "c": "long long fibonacci(int n) {\n    // Write your code here\n}\n",
+      "java": "    static long fibonacci(int n) {\n        // Write your code here\n        return 0;\n    }\n"
+    },
+    "hidden_main": {
+      "python": "\nimport sys\ndef main():\n    n = int(sys.stdin.read().strip())\n    print(f'RESULT:{fibonacci(n)}')\nmain()\n",
+      "cpp": "\n#include <bits/stdc++.h>\nusing namespace std;\nint main() {\n    int n; cin >> n;\n    cout << \"RESULT:\" << fibonacci(n) << endl;\n    return 0;\n}\n",
+      "c": "\n#include <stdio.h>\nint main() {\n    int n; scanf(\"%d\", &n);\n    printf(\"RESULT:%lld\\n\", fibonacci(n));\n    return 0;\n}\n",
+      "java": "\n    public static void main(String[] args) {\n        java.util.Scanner sc = new java.util.Scanner(System.in);\n        System.out.println(\"RESULT:\" + fibonacci(sc.nextInt()));\n    }\n"
+    }
+  }
+]

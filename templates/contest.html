@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skeld Sprint — Mission Control</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/contest.css">
+</head>
+<body>
+
+  <!-- Tab-switch warning overlay -->
+  <div id="tab-warning">
+    <h2>⚠ VIOLATION DETECTED ⚠</h2>
+    <p>You switched tabs or minimized the window.<br>This has been logged. Return to the contest immediately.</p>
+    <div id="warn-count"></div>
+    <button id="warn-back-btn" onclick="dismissWarning()">Return to Contest</button>
+  </div>
+
+  <!-- End-test confirm modal -->
+  <div class="modal-overlay" id="end-modal">
+    <div class="modal">
+      <h3>End Mission?</h3>
+      <p>Are you sure you want to end the test? Your code will be saved.
+         <strong>You will not be able to log in again.</strong></p>
+      <div class="modal-btns">
+        <button class="modal-btn modal-btn-cancel"  onclick="closeEndModal()">Cancel</button>
+        <button class="modal-btn modal-btn-confirm" onclick="confirmEnd()">End Test</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Time's-up / force-ended modal -->
+  <div class="modal-overlay" id="timesup-modal">
+    <div class="modal">
+      <h3>Time's Up!</h3>
+      <p>The contest has ended. Your code has been automatically saved. Thank you for participating!</p>
+      <div class="modal-btns">
+        <button class="modal-btn modal-btn-confirm" onclick="forceEnd()">Submit &amp; Exit</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Top bar -->
+  <div id="topbar">
+    <div class="brand">🚀 SKELD SPRINT</div>
+    <div class="divider"></div>
+    <div id="participant-name">Crewmate: {{ participant_name }}</div>
+    <div class="divider"></div>
+    <div id="timer-wrap">
+      <div id="timer-label">TIME LEFT</div>
+      <div id="timer">--:--</div>
+    </div>
+    <div class="divider"></div>
+    <button id="end-btn" onclick="showEndModal()">End Test</button>
+  </div>
+
+  <!-- Main layout -->
+  <div id="main">
+
+    <!-- Sidebar -->
+    <div id="sidebar">
+      <div class="sidebar-header">// Mission Tasks</div>
+      <div id="problem-list"></div>
+    </div>
+
+    <!-- Content: problem panel + editor column -->
+    <div id="content">
+
+      <!-- Middle: problem statement -->
+      <div id="problem-panel">
+        <div id="problem-placeholder">← Select a task</div>
+      </div>
+
+      <!-- Right: editor toolbar + monaco + output -->
+      <div id="editor-column">
+
+        <div id="editor-toolbar">
+          <select id="lang-select" onchange="onLanguageChange()" title="Programming language">
+            <option value="python">Python 3</option>
+            <option value="cpp">C++17</option>
+            <option value="c">C</option>
+            <option value="java">Java</option>
+          </select>
+          <button class="toolbar-btn btn-run"    id="run-btn"    onclick="runCode()"    disabled>▶ Run</button>
+          <button class="toolbar-btn btn-submit" id="submit-btn" onclick="submitCode()" disabled>✓ Submit</button>
+          <div class="toolbar-spacer"></div>
+          <div class="autosave-indicator" id="autosave-txt">Auto-save: ON</div>
+        </div>
+
+        <div id="editor-wrap">
+          <div id="monaco-editor"></div>
+        </div>
+
+        <div id="resize-handle"></div>
+
+        <div id="output-panel">
+          <div id="output-tabs">
+            <div class="out-tab active" id="tab-testcases" onclick="switchTab('testcases')">Test Cases</div>
+            <div class="out-tab"        id="tab-raw"        onclick="switchTab('raw')">Console</div>
+          </div>
+          <div id="output-content">
+            <div class="out-line info">// Run your code to see output here.</div>
+          </div>
+        </div>
+
+      </div><!-- end editor-column -->
+    </div><!-- end content -->
+  </div><!-- end main -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.44.0/min/vs/loader.min.js"></script>
+  <script src="/static/js/contest.js"></script>
+</body>
+</html>

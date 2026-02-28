@@ -1,0 +1,27 @@
+# ── Secrets — never push these ──────────────────────
+.env
+data/problems.json
+contest.db
+routes/judge.py
+
+# ── Python ───────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+
+# ── Virtual env ──────────────────────────────────────
+venv/
+env/
+.venv/
+
+# ── IDE ──────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+
+# ── OS ───────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+
+# ── Logs ─────────────────────────────────────────────
+*.log

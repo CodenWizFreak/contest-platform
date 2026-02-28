@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skeld Sprint — Register</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/register.css">
+</head>
+<body>
+  <div class="container">
+    <div class="logo">
+      <span class="crewmate-icon">🚀</span>
+      <h1>Skeld Sprint</h1>
+      <p>Emergency Coding Finals</p>
+    </div>
+
+    <div id="status-check">
+      <span class="status-dot" id="status-dot"></span>
+      <span id="status-text">Checking contest status...</span>
+    </div>
+
+    <div class="alert-banner">⚠ CREWMATE REGISTRATION REQUIRED ⚠</div>
+
+    <div class="panel">
+      <div class="panel-title">// Crew Manifest Entry</div>
+
+      <div class="form-group">
+        <label for="name">Crewmate Name</label>
+        <input type="text" id="name" placeholder="Full name" autocomplete="off">
+      </div>
+      <div class="form-group">
+        <label for="college">Academy (College)</label>
+        <input type="text" id="college" placeholder="College / Institution name" autocomplete="off">
+      </div>
+      <div class="form-group">
+        <label for="system_number">Station No. (System Number)</label>
+        <input type="text" id="system_number" placeholder="e.g. PC-07" autocomplete="off">
+      </div>
+      <div class="form-group">
+        <label for="phone">Comm Link (Phone Number)</label>
+        <input type="text" id="phone" placeholder="10-digit mobile number" autocomplete="off" maxlength="15">
+      </div>
+
+      <button class="btn-primary" id="enter-btn" onclick="register()" disabled>
+        Enter the Ship
+      </button>
+
+      <div class="error-msg" id="error-msg"></div>
+      <div class="waiting-msg" id="waiting-msg">⏳ Contest not yet started. Please wait...</div>
+    </div>
+  </div>
+
+  <script src="/static/js/register.js"></script>
+</body>
+</html>
