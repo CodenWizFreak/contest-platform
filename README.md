@@ -62,11 +62,14 @@ Judge0 takes ~2 minutes to fully start the first time.
 
 ## STEP 3 — Configure the Platform
 
-Open `app.py` and change these lines near the top:
+Open `.env` and change these lines near the top:
 
-```python
-ADMIN_PASSWORD = "your_secret_password_here"   # Change this!
-CONTEST_DURATION_SECONDS = 3600                  # 1 hour (adjust if needed)
+```bash
+JUDGE0_URL=
+ADMIN_PASSWORD=
+CONTEST_DURATION_SECONDS=
+DB_PATH=
+SECRET_KEY=
 ```
 
 ---
@@ -82,19 +85,7 @@ This is the address participants will open in their browser.
 
 ---
 
-## STEP 4 - Set up the Environment Variables
-
-```bash
-JUDGE0_URL=
-ADMIN_PASSWORD=
-CONTEST_DURATION_SECONDS=
-DB_PATH=
-SECRET_KEY=
-```
-
----
-
-## STEP 6 — Start the Contest Server
+## STEP 5 — Start the Contest Server
 
 ```bash
 cd ~/contest_platform
@@ -105,7 +96,7 @@ The server starts on port 5000.
 
 ---
 
-## STEP 7 — On Contest Day
+## STEP 6 — During Contest
 
 ### Admin flow:
 1. Open `http://localhost:5000/admin` on YOUR PC
