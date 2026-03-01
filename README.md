@@ -88,6 +88,10 @@ This is the address participants will open in their browser.
 ## STEP 5 — Start the Contest Server
 
 ```bash
+cd routes/ && mvn spring-boot:run &
+```
+
+```bash
 cd ~/contest_platform
 python3 app.py
 ```
